@@ -1,0 +1,5 @@
+PVRootPath: "/home/prudprud/dev/mr-prud_helm-charts"
+existingClaimConfig: "kind-claim-config"
+existingClaimStorage: "kind-claim-storage"
+secretCredentials: "kind-secret-credential"
+ci: true

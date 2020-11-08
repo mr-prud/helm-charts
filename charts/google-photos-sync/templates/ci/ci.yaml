@@ -1,0 +1,60 @@
+{{ if .Values.ci }}
+
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: kind-config
+spec:
+  accessModes:
+    - ReadWriteOnce
+  capacity:
+    storage: 1Mi
+  hostPath:
+    path: "{{ .Values.PVRootPath }}/config"
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: kind-claim-config
+spec:
+  storageClassName: ""
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Mi
+  volumeName: kind-config
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: kind-storage
+spec:
+  accessModes:
+    - ReadWriteOnce
+  capacity:
+    storage: 1Mi
+  hostPath:
+    path: "{{ .Values.PVRootPath }}/storage/"
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: kind-claim-storage
+spec:
+  storageClassName: ""
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Mi
+  volumeName: kind-storage
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: secret-credential
+type: Opaque
+data:
+  clientid: Zm9vCg==
+{{ end }}

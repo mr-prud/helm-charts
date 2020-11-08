@@ -8,6 +8,7 @@ imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
 
+
 serviceAccount:
   create: true
   annotations: {}
@@ -30,6 +31,9 @@ affinity: {}
 cronjob:
   schedule: "0 2 * * 1"
 
-persistence:
-  enabled: true
-  existingClaim: googlephotobackuppvc
+existingClaimConfig: ""
+existingClaimStorage: ""
+secretCredentials: ""
+
+ci: false
+PVRootPath: ""
